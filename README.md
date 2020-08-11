@@ -4,6 +4,7 @@
 
 ## Shortcuts
 
+* **ghc** - GetHashCode class method.
 * **disp** - Implementation of IDisposable.Dispose within a sealed class.
 * **bdisp** - Implementation of IDisposable.Dispose within a class that is expected to be inherited from.
 * **bros** - Basic equatable readonly struct.

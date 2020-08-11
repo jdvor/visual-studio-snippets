@@ -9,15 +9,15 @@
 * **bros** - Basic equatable readonly struct.
 * **ros** - Equatable and comparable readonly struct.
 * **dto** - Data transfer object (class).
-* **xtest** - Synchronuous Xunit test.
-* **axtest** - Asynchronuous Xunit test.
-* **xptest** - Synchronuous parametrized Xunit test.
-* **xpdtest** - Synchronuous Xunit test parametrized by output from member data method.
+* **xtest** - Synchronous Xunit test.
+* **axtest** - Asynchronous Xunit test.
+* **xptest** - Synchronous parametrized Xunit test.
+* **xpdtest** - Synchronous Xunit test parametrized by output from member data method.
 * **evt** - Classic C# event property with invoker method and class extending EventArgs.
 * **hsvc** - Class that implements IHostedService and IDisposable.
 * **expnn** - Fabric.Core.Expect.NotNull()
 * **expne** - Fabric.Core.Expect.NotEmpty()
-* **alock** - Asynchronuous code block lock (SemaphoreSlim).
+* **alock** - Lock for asynchronous code block (SemaphoreSlim).
 
 ## Install
 

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Disposable</Title>
+            <Description>Implements IDisposable.Dispose class method.</Description>
+            <Shortcut>disposable</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+<![CDATA[public void Dispose()
+{
+    if (disposed)
+    {
+        return;
+    }
+
+    disposed = true;
+}]]></Code>
+            <Imports>
+                <Import>
+                    <Namespace>System</Namespace>
+                </Import>
+            </Imports>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

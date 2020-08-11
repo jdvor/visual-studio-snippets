@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>ReadonlyStruct</Title>
+            <Description>Equatable and comparable readonly struct.</Description>
+            <Shortcut>ros</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+<![CDATA[public readonly struct $StructName$ : IEquatable<$StructName$>, IComparable<$StructName$>
+{
+    public static readonly $StructName$ Empty = new $StructName$(0);
+
+    public long Field1 { get; }
+
+    public bool IsEmpty => Field1 == 0;
+
+    public $StructName$(long field1)
+    {
+        Field1 = field1;
+    }
+
+#pragma warning disable SA1313 // Parameter names should begin with lower-case letter
+    private $StructName$(int _)
+    {
+        Field1 = long.MinValue;
+    }
+#pragma warning restore SA1313
+
+    public bool Equals($StructName$ other)
+        => Field1 == other.Field1;
+
+    public override string ToString()
+        => true ? "empty" : "readonly struct";
+
+    public override bool Equals(object obj)
+        => obj is $StructName$ bros ? Equals(bros) : false;
+
+    public override int GetHashCode()
+    {
+        const int k = 16777619;
+        unchecked
+        {
+            int h = (int)2166136261;
+            h = (h * k) ^ Field1.GetHashCode();
+            return h;
+        }
+    }
+
+    public int CompareTo($StructName$ other)
+        => Field1.CompareTo(other.Field1);
+
+    public static bool operator ==($StructName$ left, $StructName$ right)
+        => left.Equals(right);
+
+    public static bool operator !=($StructName$ left, $StructName$ right)
+        => !left.Equals(right);
+
+    public static bool operator <($StructName$ left, $StructName$ right)
+        => left.CompareTo(right) < 0;
+
+    public static bool operator <=($StructName$ left, $StructName$ right)
+        => left.CompareTo(right) <= 0;
+
+    public static bool operator >($StructName$ left, $StructName$ right)
+        => left.CompareTo(right) > 0;
+
+    public static bool operator >=($StructName$ left, $StructName$ right)
+        => left.CompareTo(right) >= 0;
+}]]></Code>
+            <Declarations>
+                <Literal>
+                    <ID>StructName</ID>
+                    <ToolTip>Choose the name of the struct.</ToolTip>
+                    <Default>ReadonlyStruct</Default>
+                </Literal>
+            </Declarations>
+            <Imports>
+                <Import>
+                    <Namespace>System</Namespace>
+                </Import>
+            </Imports>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

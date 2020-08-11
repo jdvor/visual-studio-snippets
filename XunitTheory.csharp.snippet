@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>XunitTheory</Title>
+            <Description>Xunit parametrized test.</Description>
+            <Shortcut>xptest</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+<![CDATA[[Theory]
+[InlineData("$end$")]
+public void $TestName$(string s1)
+{
+    Assert.True(true);
+}]]></Code>
+            <Declarations>
+                <Literal>
+                    <ID>TestName</ID>
+                    <ToolTip>Choose the name of the test.</ToolTip>
+                    <Default>Test1</Default>
+                </Literal>
+            </Declarations>
+            <Imports>
+                <Import>
+                    <Namespace>System.Threading.Tasks</Namespace>
+                </Import>
+                <Import>
+                    <Namespace>Xunit</Namespace>
+                </Import>
+            </Imports>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

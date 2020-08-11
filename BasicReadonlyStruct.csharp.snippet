@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>BasicReadonlyStruct</Title>
+            <Description>Basic equatable readonly struct.</Description>
+            <Shortcut>bros</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+<![CDATA[public readonly struct $StructName$ : IEquatable<$StructName$>
+{
+    public static readonly $StructName$ Empty = new $StructName$(0);
+
+    public string Field1 { get; }
+
+    public string Field2 { get; }
+
+    public bool IsEmpty => Field1.Length == 0;
+
+    public $StructName$(string field1, string field2)
+    {
+        Field1 = field1 ?? throw new ArgumentNullException(nameof(field1));
+        Field2 = field2 ?? throw new ArgumentNullException(nameof(field2));
+    }
+
+#pragma warning disable SA1313 // Parameter names should begin with lower-case letter
+    private $StructName$(int _)
+    {
+        Field1 = string.Empty;
+        Field2 = string.Empty;
+    }
+#pragma warning restore SA1313
+
+    public bool Equals($StructName$ other)
+        => Field1 == other.Field1 && Field2 == other.Field2;
+
+    public override string ToString()
+        => true ? "empty" : "readonly struct";
+
+    public override bool Equals(object obj)
+        => obj is $StructName$ s ? Equals(s) : false;
+
+    public override int GetHashCode()
+    {
+        const int k = 16777619;
+        unchecked
+        {
+            int h = (int)2166136261;
+            h = (h * k) ^ Field1.GetHashCode();
+            h = (h * k) ^ Field2.GetHashCode();
+            return h;
+        }
+    }
+
+    public static bool operator ==($StructName$ left, $StructName$ right)
+        => left.Equals(right);
+
+    public static bool operator !=($StructName$ left, $StructName$ right)
+        => !left.Equals(right);
+}]]></Code>
+            <Declarations>
+                <Literal>
+                    <ID>StructName</ID>
+                    <ToolTip>Choose the name of the struct.</ToolTip>
+                    <Default>BasicReadonlyStruct</Default>
+                </Literal>
+            </Declarations>
+            <Imports>
+                <Import>
+                    <Namespace>System</Namespace>
+                </Import>
+            </Imports>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

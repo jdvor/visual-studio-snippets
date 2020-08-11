@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>GetHashCode</Title>
+            <Description>Overrides GetHashCode class method.</Description>
+            <Shortcut>ghc</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+<![CDATA[public override int GetHashCode()
+{
+    const int k = 16777619;
+    unchecked
+    {
+        int h = (int)2166136261;
+        h = (h * k) ^ RuleSetName.GetHashCode();
+        h = (h * k) ^ CorrelationId.GetHashCode();
+        return h;
+    }
+}]]></Code>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

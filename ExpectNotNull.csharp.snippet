@@ -2,27 +2,22 @@
 <CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
     <CodeSnippet Format="1.0.0">
         <Header>
-            <Title>XunitFact</Title>
-            <Description>Synchronuous Xunit test.</Description>
-            <Shortcut>xtest</Shortcut>
+            <Title>ExpectNotNull</Title>
+            <Description>Fabric.Core.Expect.NotNull()</Description>
+            <Shortcut>expnn</Shortcut>
         </Header>
         <Snippet>
-            <Code Language="CSharp">
-<![CDATA[[Fact]
-public void $TestName$()
-{
-    Assert.True(true);$end$
-}]]></Code>
+            <Code Language="CSharp"><![CDATA[Expect.NotNull($ArgName$, nameof($ArgName$));]]></Code>
             <Declarations>
                 <Literal>
-                    <ID>TestName</ID>
-                    <ToolTip>Choose the name of the test.</ToolTip>
-                    <Default>Test1</Default>
+                    <ID>ArgName</ID>
+                    <ToolTip>Choose the name of the argument.</ToolTip>
+                    <Default>arg1</Default>
                 </Literal>
             </Declarations>
             <Imports>
                 <Import>
-                    <Namespace>Xunit</Namespace>
+                    <Namespace>Fabric.Core</Namespace>
                 </Import>
             </Imports>
         </Snippet>

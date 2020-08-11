@@ -3,17 +3,21 @@
     <CodeSnippet Format="1.0.0">
         <Header>
             <Title>Disposable</Title>
-            <Description>Implements IDisposable.Dispose class method.</Description>
-            <Shortcut>disposable</Shortcut>
+            <Description>Implementation of IDisposable.Dispose within a sealed class.</Description>
+            <Shortcut>disp</Shortcut>
         </Header>
         <Snippet>
             <Code Language="CSharp">
-<![CDATA[public void Dispose()
+<![CDATA[private bool disposed;
+
+public void Dispose()
 {
     if (disposed)
     {
         return;
     }
+
+    $end$
 
     disposed = true;
 }]]></Code>

@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>HostedService</Title>
+            <Description>Class that implements IHostedService and IDisposable.</Description>
+            <Shortcut>hsvc</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+<![CDATA[public sealed class $ClassName$ : IHostedService, IDisposable
+{
+    private readonly CancellationTokenSource cts;
+    private bool disposed;
+
+    public $ClassName$()
+    {
+        cts = new CancellationTokenSource();
+    }
+
+    public void Dispose()
+    {
+        if (disposed)
+        {
+            return;
+        }
+
+        cts.Dispose();
+
+        disposed = true;
+    }
+
+    public Task StartAsync(CancellationToken cancellationToken)
+    {
+        // Pass cts.Token into cancellable assets such as long-running Task, etc.
+        return Task.CompletedTask;
+    }
+
+    public Task StopAsync(CancellationToken cancellationToken)
+    {
+        cts.Cancel();
+        return Task.CompletedTask;
+    }
+}]]></Code>
+            <Declarations>
+                <Literal>
+                    <ID>ClassName</ID>
+                    <ToolTip>Choose the name of the class.</ToolTip>
+                    <Default>MyHostedService</Default>
+                </Literal>
+            </Declarations>
+            <Imports>
+                <Import>
+                    <Namespace>Microsoft.Extensions.Hosting</Namespace>
+                </Import>
+                <Import>
+                    <Namespace>System</Namespace>
+                </Import>
+                <Import>
+                    <Namespace>System.Threading</Namespace>
+                </Import>
+                <Import>
+                    <Namespace>System.Threading.Tasks</Namespace>
+                </Import>
+            </Imports>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

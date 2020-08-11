@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>AsyncLock</Title>
+            <Description>Asynchronuous code block lock (SemaphoreSlim).</Description>
+            <Shortcut>alock</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+<![CDATA[private readonly SemaphoreSlim semaphore = new SemaphoreSlim(1, 1); // IDisposable
+private readonly TimeSpan maxWait = TimeSpan.FromSeconds(10);
+
+private async Task SomeAsync(CancellationToken ct)
+{
+    try
+    {
+        await semaphore.WaitAsync(maxWait, ct).ConfigureAwait(false);
+
+        // guarded async code here$end$
+    }
+    catch (Exception)
+    {
+        throw;
+    }
+    finally
+    {
+        semaphore.Release();
+    }
+}]]></Code>
+            <Imports>
+                <Import>
+                    <Namespace>System</Namespace>
+                </Import>
+                <Import>
+                    <Namespace>System.Threading</Namespace>
+                </Import>
+                <Import>
+                    <Namespace>System.Threading.Tasks</Namespace>
+                </Import>
+            </Imports>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

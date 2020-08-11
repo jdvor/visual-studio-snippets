@@ -14,8 +14,8 @@
     unchecked
     {
         int h = (int)2166136261;
-        h = (h * k) ^ RuleSetName.GetHashCode();
-        h = (h * k) ^ CorrelationId.GetHashCode();
+        h = (h * k) ^ $end$.GetHashCode();
+        // h = (h * k) ^ Field2.GetHashCode();
         return h;
     }
 }]]></Code>

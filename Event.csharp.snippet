@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippets xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+    <CodeSnippet Format="1.0.0">
+        <Header>
+            <Title>Event</Title>
+            <Description>Classic C# event property with invoker method and class extending EventArgs.</Description>
+            <Shortcut>evt</Shortcut>
+        </Header>
+        <Snippet>
+            <Code Language="CSharp">
+<![CDATA[public event EventHandler<$SomethingOccured$Args> $SomethingOccured$;
+
+protected void On$SomethingOccured$()
+{
+    var h = $SomethingOccured$;
+    if (h != null)
+    {
+        h.Invoke(this, new $SomethingOccured$Args());
+    }
+}
+
+public class $SomethingOccured$Args : EventArgs
+{
+}]]></Code>
+            <Declarations>
+                <Literal>
+                    <ID>EventName</ID>
+                    <ToolTip>Choose the name of the event.</ToolTip>
+                    <Default>SomethingOccured</Default>
+                </Literal>
+            </Declarations>
+            <Imports>
+                <Import>
+                    <Namespace>System</Namespace>
+                </Import>
+            </Imports>
+        </Snippet>
+    </CodeSnippet>
+</CodeSnippets>

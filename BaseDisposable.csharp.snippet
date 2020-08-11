@@ -3,12 +3,14 @@
     <CodeSnippet Format="1.0.0">
         <Header>
             <Title>BaseDisposable</Title>
-            <Description>Implements IDisposable.Dispose class method.</Description>
-            <Shortcut>basedisposable</Shortcut>
+            <Description>Implementation of IDisposable.Dispose within a class that is expected to be inherited from.</Description>
+            <Shortcut>bdisp</Shortcut>
         </Header>
         <Snippet>
             <Code Language="CSharp">
-<![CDATA[protected virtual void Dispose(bool disposing)
+<![CDATA[private bool disposed;
+
+protected virtual void Dispose(bool disposing)
 {
     if (disposed)
     {
@@ -18,6 +20,7 @@
     if (disposing)
     {
        // managed here
+       $end$
     }
 
     // unmanaged here

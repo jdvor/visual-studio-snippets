@@ -8,18 +8,18 @@
         </Header>
         <Snippet>
             <Code Language="CSharp">
-<![CDATA[public event EventHandler<$SomethingOccured$Args> $SomethingOccured$;
+<![CDATA[public event EventHandler<$EventName$Args> $EventName$;
 
-protected void On$SomethingOccured$()
+protected void On$EventName$()
 {
-    var h = $SomethingOccured$;
+    var h = $EventName$;
     if (h != null)
     {
-        h.Invoke(this, new $SomethingOccured$Args());
+        h.Invoke(this, new $EventName$Args());
     }
 }
 
-public class $SomethingOccured$Args : EventArgs
+public class $EventName$Args : EventArgs
 {
 }]]></Code>
             <Declarations>
